@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winter Arc Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Burger Menu -->
+  <div class="burger-btn" id="burgerBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Side Panel -->
+  <div class="side-panel" id="sidePanel">
+    <div class="panel-header">
+      <h2>Subject Profile</h2>
+      <button class="close-btn" id="closeBtn">×</button>
+    </div>
+    
+    <div class="profile-section">
+      <div class="profile-field">
+        <label>Subject ID:</label>
+        <div class="profile-value" id="profileName">—</div>
+      </div>
+      
+      <div class="profile-field">
+        <label>Experiment Started:</label>
+        <div class="profile-value" id="profileStart">—</div>
+      </div>
+      
+      <div class="profile-field">
+        <label>Days Active:</label>
+        <div class="profile-value" id="profileDays">0</div>
+      </div>
+      
+      <div class="profile-field">
+        <label>Total Completions:</label>
+        <div class="profile-value" id="profileTotal">0</div>
+      </div>
+      
+      <div class="profile-field">
+        <label>Current Streak:</label>
+        <div class="profile-value" id="profileStreak">0 days</div>
+      </div>
+      
+      <div class="profile-field">
+        <label>Protocol Status:</label>
+        <div class="profile-value status-active">ACTIVE</div>
+      </div>
+    </div>
+
+    <div class="categories-section">
+      <h3>Category Progress</h3>
+      <div class="category-item">
+        <span>💪 Fitness</span>
+        <span id="catFitness">0</span>
+      </div>
+      <div class="category-item">
+        <span>💼 Business</span>
+        <span id="catBusiness">0</span>
+      </div>
+      <div class="category-item">
+        <span>📚 Knowledge</span>
+        <span id="catKnowledge">0</span>
+      </div>
+      <div class="category-item">
+        <span>🙏 Faith</span>
+        <span id="catFaith">0</span>
+      </div>
+      <div class="category-item">
+        <span>🧠 Mental</span>
+        <span id="catMental">0</span>
+      </div>
+    </div>
+
+    <button class="reset-btn" id="resetBtn">Reset Experiment</button>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Welcome Modal -->
+  <div class="modal" id="welcomeModal">
+    <div class="modal-content">
+      <h2>Initialize Winter Arc Protocol</h2>
+      <p>Enter subject identification for tracking:</p>
+      <input type="text" id="nameInput" placeholder="Your name..." autocomplete="off">
+      <button id="startBtn">Begin Experiment</button>
+    </div>
+  </div>
+
+  <!-- Category Modal -->
+  <div class="modal" id="categoryModal">
+    <div class="modal-content">
+      <h2>Select Category</h2>
+      <p>Assign this habit to a category:</p>
+      <div class="category-buttons">
+        <button class="cat-btn" data-category="fitness">💪 Fitness</button>
+        <button class="cat-btn" data-category="business">💼 Business</button>
+        <button class="cat-btn" data-category="knowledge">📚 Knowledge</button>
+        <button class="cat-btn" data-category="faith">🙏 Faith</button>
+        <button class="cat-btn" data-category="mental">🧠 Mental</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="fade-in">
+      <div class="greeting" id="greeting">Welcome back.</div>
+      <div class="date" id="date"></div>
+    </header>
+
+    <!-- Stats Dashboard -->
+    <div class="stats fade-in">
+      <div class="stat-card">
+        <div class="stat-label">Today's Progress</div>
+        <div class="stat-value" id="todayPercent">0%</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="todayProgress" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Mission Score</div>
+        <div class="stat-value" id="scoreDisplay">0/0</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="scoreProgress" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Habit Tracker -->
+    <div class="habit-section fade-in">
+      <div class="section-header">
+        <h2 class="section-title">Mission Control</h2>
+      </div>
+
+      <form class="add-habit-form" id="addHabitForm">
+        <input 
+          type="text" 
+          id="habitInput" 
+          placeholder="Add new discipline..." 
+          autocomplete="off"
+          required
+        >
+        <button type="submit">Deploy</button>
+      </form>
+
+      <div class="table-wrapper">
+        <table id="habitTable">
+          <thead>
+            <tr id="tableHeader">
+              <th>Habit</th>
+            </tr>
+          </thead>
+          <tbody id="habitBody">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="message" id="motivationMsg">
+        Discipline logged. Consistency level increased.
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
